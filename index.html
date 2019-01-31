@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CUMIPMT Calculator</title>
+
+    <link rel="stylesheet" type="text/css" href="css/m.css">
+
+    <!-- Numeric -->
+    <script src="lib/numeric.min.js"></script>
+    <!-- Numeral.js -->
+    <script src="lib/numeral.min.js"></script>
+    <!-- jStat -->
+    <script src="lib/jstat.min.js"></script>
+
+    <!-- Finally add formula.js -->
+    <script src="lib/formula.min.js"></script>
+</head>
+<body>
+
+<div class="i_calculator">
+    <form action="#" name="calculator">
+        <span class="caption">融资计算器</span>
+        <div><label><span>车价</span><input id="price" name="price" type="number">元</label></div>
+        <div><label><span>数量</span><input id="amount" name="amount" type="number">台</label></div>
+        <div><label><span>首付比</span><input id="down_payment" name="down_payment" type="number">%</label></div>
+        <div><label><span>融资额</span><input id="loan" name="loan" type="number" disabled>元</label></div>
+        <div><label><span>年利率</span><input id="annual_rate" name="annual_rate" type="number">%</label></div>
+        <div><label><span>期限</span><input id="periods" name="periods" type="number">月</label></div>
+        <div><label><span>利息</span><input id="interest" name="interest" type="number" disabled>元</label></div>
+        <div><label><span>月供</span><input id="monthly_pay" name="monthly_pay" type="number" disabled>元</label></div>
+        <div><input type="button" value="重新计算" onclick="cal(this.form)"></div>
+    </form>
+
+</div>
+
+<script>
+    function cal(e) {
+        e.loan.value = e.price.value * e.amount.value * (1 - e.down_payment.value/100.0);
+
+        e.interest.value = - formulajs.CUMIPMT(e.annual_rate.value/1200.0, e.periods.value, e.loan.value, 1, e.periods.value, 0);
+
+        e.monthly_pay.value = (e.loan.value * 1.0 + e.interest.value * 1.0) / (e.periods.value * 1.0) ;
+    }
+</script>
+
+</body>
+</html>

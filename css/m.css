@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.i_calculator {
+    float: left;
+    padding: 20px;
+    background-color: #fdfefe;
+    border: 1px solid #eeeeee;
+}
+
+.i_calculator span {
+    font-size: 12pt;
+    width: 80px;
+    display: inline-block;
+}
+
+.i_calculator div {
+    padding: 10px 20px;
+}
+
+.i_calculator input[type=number] {
+    margin: 0 5px;
+    text-align: right;
+}
+
+.i_calculator input[type=button] {
+    padding: 5px 20px;
+    margin-left: 160px;
+}
+
+span.caption {
+    width: 200px;
+    font-size: 24pt;
+}
+
